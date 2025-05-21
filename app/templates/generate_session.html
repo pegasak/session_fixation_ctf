@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Generate Session{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Сгенерировать Session ID</h1>
+
+<div class="alert alert-success" role="alert">
+  Ваш сессионный ID:
+  <strong id="session-id">{{ session_id }}</strong>
+  <button class="btn btn-sm btn-outline-secondary ml-2" onclick="copySessionId()">Скопировать</button>
+</div>
+
+<p>
+  Теперь вы можете использовать этот session_id при логине:
+  <a href="{{ url_for('login') }}">Перейти на страницу входа</a>
+</p>
+
+<script>
+function copySessionId() {
+  const text = document.getElementById("session-id").innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    alert("Session ID скопирован!");
+  }, function(err) {
+    alert("Ошибка при копировании: " + err);
+  });
+}
+</script>
+{% endblock %}

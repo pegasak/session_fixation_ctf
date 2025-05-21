@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Панель пользователя</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Здравствуйте, {{ username }}!</h5>
+
+    {% if flag %}
+      <p class="card-text">
+        🎉 Поздравляем! Вы вошли как <strong>admin</strong>.
+        Вот ваш флаг:
+        <pre><code>{{ flag }}</code></pre>
+      </p>
+    {% elif username == "guest" %}
+      <p class="card-text">Вы не залогинены. Пожалуйста, <a href="{{ url_for('login') }}">войдите</a>.</p>
+    {% else %}
+      <p class="card-text">Вы вошли как <strong>{{ username }}</strong>, но флаг доступен только администратору.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

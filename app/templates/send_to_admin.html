@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Send to Admin{% endblock %}
+
+{% block content %}
+<h1>Отправка сообщения администратору</h1>
+<p>Если у вас возникли проблемы при входе, отправьте ссылку или описание проблемы администратору.</p>
+
+<form method="get" action="{{ url_for('send') }}">
+  <div class="form-group">
+    <label for="url">Ссылка на шаг входа (необязательно):</label>
+    <input type="url" class="form-control" id="url" name="url" placeholder="http://localhost:5000/login?...">
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+
+{% if success %}
+  <div class="alert alert-success mt-4">{{ success }}</div>
+{% endif %}
+{% if error %}
+  <div class="alert alert-danger mt-4">{{ error }}</div>
+{% endif %}
+{% endblock %}
