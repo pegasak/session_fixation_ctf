@@ -9,6 +9,7 @@ services:
       - FLASK_ENV=development
       - FLASK_APP=app/app.py
       - SECRET_KEY=${SECRET_KEY}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - FLAG=practice{session_fixation_worked}
     volumes:
       - .:/app
